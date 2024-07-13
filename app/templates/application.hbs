@@ -1,7 +1,9 @@
-{{page-title "TicTacToe"}}
 
-{{! The following component displays Ember's default welcome message. }}
-<WelcomePage />
-{{! Feel free to remove this! }}
-
-{{outlet}}
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-drawer-button">
+  <NavBar />
+  <main class="mdl-layout__content">
+    <div class="page-content">
+    {{outlet}}
+    </div>
+  </main>
+</div>
