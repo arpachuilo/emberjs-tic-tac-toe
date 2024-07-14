@@ -1,1 +1,32 @@
-<Gameboard />
+<App>
+    <:nav>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <Input class="mdl-textfield__input" @value={{this.m}} @type="number" min="2" max="100" pattern="-?[0-9]*(\.[0-9]+)?" id="M" />
+          <label class="mdl-textfield__label" for="M">M</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <Input class="mdl-textfield__input" @value={{this.n}} @type="number" min="2" max="100" pattern="-?[0-9]*(\.[0-9]+)?" id="N" />
+          <label class="mdl-textfield__label" for="N">N</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <Input class="mdl-textfield__input" @value={{this.k}} @type="number" min="2" max="100" pattern="-?[0-9]*(\.[0-9]+)?" id="K" />
+          <label class="mdl-textfield__label" for="K">K</label>
+        </div>
+    </:nav>
+
+    <:default>
+        <Gameboard
+            @M={{this.M}}
+            @N={{this.N}}
+            @K={{this.K}}
+            @cells={{this.cells}}
+            @updateCell={{this.updateCell}}
+            @update={{this.update}}
+            @player={{this.player}}
+            @computer={{this.computer}}
+            @current={{this.current}}
+            @status={{this.status}}
+            @gameOver={{this.gameOver}}
+        />
+    </:default>
+</App>

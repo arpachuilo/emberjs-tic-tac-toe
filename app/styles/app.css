@@ -1,3 +1,12 @@
 @import url("about.css");
 @import url("gameboard.css");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
+
+nav.mdl-navigation .mdl-textfield {
+  width: 3em;
+}
+
+nav.mdl-navigation .mdl-textfield > input.mdl-textfield__input,
+nav.mdl-navigation .mdl-textfield > label.mdl-textfield__label {
+  color: white;
+}

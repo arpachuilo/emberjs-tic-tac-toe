@@ -10,8 +10,8 @@ module('Acceptance | tic tac toe', function (hooks) {
     assert.strictEqual(currentURL(), '/');
 
     assert.dom('#gameboard').exists();
-    assert.dom('nav > a.mdl-navigation__link:nth-child(2)').hasText('About');
-    await click('nav > a.mdl-navigation__link:nth-child(2)');
+    assert.dom('#about-nav').hasText('About');
+    await click('#about-nav');
     assert.strictEqual(currentURL(), '/about');
   });
 
@@ -20,8 +20,8 @@ module('Acceptance | tic tac toe', function (hooks) {
     assert.strictEqual(currentURL(), '/about');
 
     assert.dom('#about').exists();
-    assert.dom('nav > a.mdl-navigation__link:nth-child(1)').hasText('New Game');
-    await click('nav > a.mdl-navigation__link:nth-child(1)');
+    assert.dom('#newgame-nav').hasText('New Game');
+    await click('#newgame-nav');
     assert.strictEqual(currentURL(), '/');
   });
 
@@ -30,13 +30,13 @@ module('Acceptance | tic tac toe', function (hooks) {
     assert.strictEqual(currentURL(), '/');
 
     assert.dom('nav').exists();
-    assert.dom('nav > a.mdl-navigation__link:nth-child(1)').hasText('New Game');
-    assert.dom('nav > a.mdl-navigation__link:nth-child(2)').hasText('About');
+    assert.dom('#newgame-nav').hasText('New Game');
+    assert.dom('#about-nav').hasText('About');
 
-    await click('nav > a.mdl-navigation__link:nth-child(2)');
+    await click('#about-nav');
     assert.strictEqual(currentURL(), '/about');
 
-    await click('nav > a.mdl-navigation__link:nth-child(1)');
+    await click('#newgame-nav');
     assert.strictEqual(currentURL(), '/');
   });
 });

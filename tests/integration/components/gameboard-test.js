@@ -11,4 +11,13 @@ module('Integration | Component | gameboard', function (hooks) {
 
     assert.dom('#gameboard').exists();
   });
+
+  test('it renders dialog with message', async function (assert) {
+    await render(hbs`<Gameboard
+      @gameOver="You Win!"
+      />`);
+
+    assert.dom('dialog').exists();
+    assert.dom('dialog').hasText('You Win! Play Again');
+  });
 });
