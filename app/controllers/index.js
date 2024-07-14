@@ -159,6 +159,30 @@ export default class IndexController extends Controller {
     this.current = this.current === X ? O : X;
   }
 
+  get cellsWithNeighbors() {
+    return this.cells
+      .map((row, i) => {
+        return row.map((value, j) => {
+          return [i, j, value];
+        });
+      })
+      .flat()
+      .filter(([i, j, value]) => {
+        if (value) return false;
+        for (let n = 0; n < this.offsets.length; n++) {
+          const [di, dj] = this.offsets[n];
+          const [ni, nj] = [i + di, j + dj];
+
+          // check for invalid indexing
+          if (ni < 0 || ni >= this.cells.length) continue;
+          if (nj < 0 || nj >= this.cells[ni].length) continue;
+          if (this.cells[ni][nj]) return true;
+        }
+
+        return false;
+      });
+  }
+
   /**
    * Have computer, make a move.
    * Currently will just place at some random unoccupied cell.
@@ -171,8 +195,16 @@ export default class IndexController extends Controller {
     // simulate some API like response with timeout
     this.computerBusy = setTimeout(() => {
       // pick random unoccupied cell
-      const randomIndex = Math.floor(Math.random() * unoccupiedCells.length);
-      const [ri, rj] = unoccupiedCells[randomIndex];
+      let randomIndex = Math.floor(Math.random() * unoccupiedCells.length);
+      let [ri, rj] = unoccupiedCells[randomIndex];
+
+      // some cell has neighbor
+      if (unoccupiedCells.length !== this.M * this.N) {
+        const cellsWithNeighbors = this.cellsWithNeighbors;
+        randomIndex = Math.floor(Math.random() * cellsWithNeighbors.length);
+        [ri, rj] = cellsWithNeighbors[randomIndex];
+      }
+
       this.updateCell(ri, rj, this.computer);
 
       this.update();
