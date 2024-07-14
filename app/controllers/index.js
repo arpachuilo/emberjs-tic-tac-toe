@@ -135,7 +135,6 @@ export default class IndexController extends Controller {
    * Found winner if count is equal is expected k value.
    */
   checkForWinner(current, offset, expected, count = 1) {
-    console.debug(typeof this.K);
     // found winner, return
     if (count === this.K) return expected;
 
