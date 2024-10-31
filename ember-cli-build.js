@@ -7,5 +7,11 @@ module.exports = function (defaults) {
     // Add options here
   });
 
+  // add mdl (css only)
+  app.import(
+    'node_modules/material-design-lite/dist/material.blue_grey-red.min.css',
+  );
+  app.import('node_modules/material-design-lite/dist/material.min.js');
+
   return app.toTree();
 };

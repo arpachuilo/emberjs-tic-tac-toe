@@ -1,0 +1,24 @@
+<div class="mdl-grid mdl-grid--no-spacing" id="gameboard">
+    {{#each this.cells as |cells i|}}
+        {{#each cells as |cell j|}}
+            <Gameboard::Cell
+                @markerStyle={{this.markerStyle}}
+                @cellStyle={{this.cellStyle}}
+                @disabled={{this.cellDisabled cell}}
+                @icon={{this.cellIcon cell}}
+                @onClick={{(fn this.placeMarker i j)}}
+            />
+        {{/each}}
+    {{/each}}
+
+    {{#if this.status}}
+        <Gameboard::Status @status={{this.status}} />
+    {{/if}}
+
+    {{#if this.gameOver}}
+        <Gameboard::GameOver
+            @gameOver={{this.gameOver}}
+            @reset={{this.reset}}
+        />
+    {{/if}}
+</div>

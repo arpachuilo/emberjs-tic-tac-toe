@@ -1,1 +1,11 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+@import url("about.css");
+@import url("gameboard.css");
+
+nav.mdl-navigation .mdl-textfield {
+  width: 3em;
+}
+
+nav.mdl-navigation .mdl-textfield > input.mdl-textfield__input,
+nav.mdl-navigation .mdl-textfield > label.mdl-textfield__label {
+  color: white;
+}

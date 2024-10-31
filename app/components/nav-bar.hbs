@@ -1,0 +1,16 @@
+<header class="mdl-layout__header">
+  <div class="mdl-layout__header-row">
+    {{!-- Title --}}
+    <span class="mdl-layout-title">Tic Tac Toe</span>
+    <div class="mdl-layout-spacer"></div>
+
+    {{!-- Nav --}}
+    <nav class="mdl-navigation">
+      {{yield}}
+
+      {{!-- anchor tag will reload page regardless to force a new game, but anchor tags mess with test --}}
+      <LinkTo {{ on "click" this.reload }} @route="index" class="mdl-navigation__link" id="newgame-nav">New Game</LinkTo>
+      <LinkTo @route="about" class="mdl-navigation__link" id="about-nav">About</LinkTo>
+    </nav>
+  </div>
+</header>
